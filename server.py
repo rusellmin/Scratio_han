@@ -33,7 +33,7 @@ class server():
         msg += 'Access-Control-Allow-Origin: *' + crlf
         msg += crlf
         msg += s + crlf
-        self.client_sock.send(msg)
+        self.client_sock.send(msg.encode())
 
     def htmlRequest(self,header):
         if  header.find('GET ') == -1:
@@ -165,10 +165,10 @@ class server():
                 continue
             msg = ''
             while msg.find('\n') == -1:
-                msg = self.client_sock.recv(1024)
+                msg = self.client_sock.recv(1024).decode("utf-8")
                 if len(msg) > 0:
                     msg += msg;
-            logging.info("request msg:{}".format(msg))
+            #logging.info("request msg:{}".format(msg))
             self.htmlRequest(msg)
             self.client_sock.close()
             #time.sleep(0.1)

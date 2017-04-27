@@ -3,6 +3,8 @@
 import serial
 import time
 import threading
+import logging
+import traceback
 
 class arduino():
 
@@ -38,9 +40,13 @@ class arduino():
 
     def readStatus(self):
         while not self.stop_event.is_set():
+            line = None
             try:
-                line = self.ser.readline().rstrip('\r\n')
+                line = self.ser.readline().decode("ISO-8859-1").rstrip('\r\n')
+                #logging.info(line)
             except:
+                logging.info("exception serial readline...")
+                logging.info(traceback.format_exc())
                 self.close()
             #print len(line)
             if len(line) > 0:
