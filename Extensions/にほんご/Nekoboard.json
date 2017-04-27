@@ -1,0 +1,15 @@
+{
+    "extensionName": "ねこぼーど",
+    "extensionPort": 9000,
+    "blockSpecs": [
+      ["r", "スライダー","slider"],
+      ["r", "あかるさ", "brightness"],
+      ["r", "マイクのおと", "sound"],
+      ["b", "ボタンがおされた？","button"],
+      [" ", "LEDをひからせる", "ledon"],
+      [" ", "LEDをけす", "ledoff"]
+    ],
+    "menus": {
+    },
+    "type": "serial"
+}
